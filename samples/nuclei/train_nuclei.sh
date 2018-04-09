@@ -1,0 +1,10 @@
+python nuclei.py train --dataset=/home/swk/Documents/kaggle/nuclei-0/ --model=coco  > nuclei-dataset-0.log
+python nuclei.py train --dataset=/home/swk/Documents/kaggle/nuclei-1/ --model=coco  > nuclei-dataset-1.log
+python nuclei.py train --dataset=/home/swk/Documents/kaggle/nuclei-2/ --model=coco  > nuclei-dataset-2.log
+python nuclei.py train --dataset=/home/swk/Documents/kaggle/nuclei-3/ --model=coco  > nuclei-dataset-3.log
+python nuclei.py train --dataset=/home/swk/Documents/kaggle/nuclei-4/ --model=coco  > nuclei-dataset-4.log
+python nuclei.py train --dataset=/home/swk/Documents/kaggle/nuclei-5/ --model=coco  > nuclei-dataset-5.log
+python nuclei.py train --dataset=/home/swk/Documents/kaggle/nuclei-6/ --model=coco  > nuclei-dataset-6.log
+python nuclei.py train --dataset=/home/swk/Documents/kaggle/nuclei-7/ --model=coco  > nuclei-dataset-7.log
+python nuclei.py train --dataset=/home/swk/Documents/kaggle/nuclei-8/ --model=coco  > nuclei-dataset-8.log
+python nuclei.py train --dataset=/home/swk/Documents/kaggle/nuclei-9/ --model=coco  > nuclei-dataset-9.log

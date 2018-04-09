@@ -124,12 +124,12 @@ class NucleiConfig(Config):
     # Non-maximum suppression threshold for detection
     DETECTION_NMS_THRESHOLD = 0.3  # 0.3
 
-    MEAN_PIXEL = np.array([0., 0., 0.])
+    #MEAN_PIXEL = np.array([0., 0., 0.])
 
     # Weight decay regularization
     WEIGHT_DECAY = 0.0001
 
-    #MEAN_PIXEL = np.array([44.129, 40.042, 49.181])
+    MEAN_PIXEL = np.array([45.009, 40.805, 49.927])
 
 
 ############################################################
@@ -584,20 +584,12 @@ if __name__ == '__main__':
 
         # *** This training schedule is an example. Update to your needs ***
 
-        # Training - Stage 1
-        print("Training network heads")
-        model.train(dataset_train, dataset_val,
-                    learning_rate=config.LEARNING_RATE,
-                    epochs=5,
-                    layers='heads',
-                    augmentation=augmentation)
-
-        # Training - Stage 2
+        # Training
         # Fine tune all layers
         print("Fine tune all layers")
         model.train(dataset_train, dataset_val,
-                    learning_rate=config.LEARNING_RATE / 10,
-                    epochs=25,
+                    learning_rate=config.LEARNING_RATE,
+                    epochs=20,
                     layers='all',
                     augmentation=augmentation)
 

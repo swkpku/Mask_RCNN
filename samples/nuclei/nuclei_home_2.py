@@ -115,7 +115,7 @@ class NucleiConfig(Config):
     MASK_POOL_SIZE = 14
     MASK_SHAPE = [28, 28]
     TRAIN_ROIS_PER_IMAGE = 512
-    RPN_NMS_THRESHOLD = 0.7
+    RPN_NMS_THRESHOLD = 0.9
     MAX_GT_INSTANCES = 256
     DETECTION_MAX_INSTANCES = 400
     # Minimum probability value to accept a detected instance

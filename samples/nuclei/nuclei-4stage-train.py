@@ -538,7 +538,7 @@ if __name__ == '__main__':
             # one image at a time. Batch size = GPU_COUNT * IMAGES_PER_GPU
             GPU_COUNT = 1
             IMAGES_PER_GPU = 1
-            DETECTION_MIN_CONFIDENCE = 0.9
+            DETECTION_MIN_CONFIDENCE = 0
         config = InferenceConfig()
     config.display()
 
@@ -578,28 +578,12 @@ if __name__ == '__main__':
         dataset_val.load_nuclei(args.dataset, "val", year=args.year, auto_download=args.download)
         dataset_val.prepare()
 
-        # Image Augmentation
-        # Right/Left flip 50% of the time
-        augmentation = imgaug.augmenters.Fliplr(0.5)
-
         # *** This training schedule is an example. Update to your needs ***
-
-        # Training - Stage 1
-        print("Training network heads")
-        model.train(dataset_train, dataset_val,
-                    learning_rate=config.LEARNING_RATE,
-                    epochs=5,
-                    layers='heads',
-                    augmentation=augmentation)
-
-        # Training - Stage 2
-        # Fine tune all layers
         print("Fine tune all layers")
         model.train(dataset_train, dataset_val,
-                    learning_rate=config.LEARNING_RATE / 10,
-                    epochs=25,
-                    layers='all',
-                    augmentation=augmentation)
+                    learning_rate=config.LEARNING_RATE,
+                    epochs=50,
+                    layers='all')
 
     elif args.command == "evaluate":
         # Validation dataset
@@ -676,7 +660,7 @@ if __name__ == '__main__':
         df = pd.DataFrame()
         df['ImageId'] = new_test_ids
         df['EncodedPixels'] = pd.Series(rles).apply(lambda x: ' '.join(str(y) for y in x))
-        df.to_csv('output/submission-dataset0-11-threshold9-nms3.csv', index=False)
+        df.to_csv('output/submission-10.csv', index=False)
 
     else:
         print("'{}' is not recognized. "
